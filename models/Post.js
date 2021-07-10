@@ -21,7 +21,7 @@ const Post = sequelize.define('Post', {
     user_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'user',
+            model: 'User',
             key: 'id'
         }
     }
@@ -29,7 +29,7 @@ const Post = sequelize.define('Post', {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post'
+    modelName: 'Post'
 });
 
-module.exports = Post;
+module.exports = Post

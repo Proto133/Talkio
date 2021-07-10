@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-const User = sequelize.define({
+const User = sequelize.define('User', {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -45,6 +45,7 @@ const User = sequelize.define({
                 throw new Error("Can't set `fullName` value!");
             }
         },
+    }, {
         hooks: {
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
@@ -55,11 +56,11 @@ const User = sequelize.define({
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user',
+        modelName: 'User',
         instanceMethods: {
-            generateHash(password) {
-                return bcrypt.hash(password, bcrypt.genSaltSync(8));
-            },
+            // generateHash(password) {
+            //     return bcrypt.hash(password, bcrypt.genSaltSync(8));
+            // },
             validPassword(loginPW) {
                 return bcrypt.compareSync(loginPW, this.password);
             }

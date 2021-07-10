@@ -7,16 +7,13 @@ const saltRounds = 5;
 
 // CREATE new user
 router.post('/', async(req, res) => {
-    const password = req.body.password;
-    const encryptedPassword = await User.generateHash(password);
-
     try {
         const dbUserData = await User.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             username: req.body.username,
             email: req.body.email,
-            password: encryptedPassword
+            password: req.body.password,
         });
 
         // TODO: Set up sessions with the 'loggedIn' variable
