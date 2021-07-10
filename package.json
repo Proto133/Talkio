@@ -1,0 +1,37 @@
+{
+    "name": "talkio",
+    "version": "1.0.0",
+    "description": "Tech Blog Site - Built with Nodejs, Express, Express-Sessions, MySQL, Sequelize, Handlebarsjs, and TLC.",
+    "main": "server.js",
+    "scripts": {
+        "watch": "nodemon server.js",
+        "start": "node server.js",
+        "seed": "node seeds/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Proto133/Talkio.git"
+    },
+    "author": "Peter Roto",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Proto133/Talkio/issues"
+    },
+    "homepage": "https://github.com/Proto133/Talkio#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.11",
+        "writemereadme": "^1.5.0"
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "connect-session-sequelize": "^7.1.1",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-handlebars": "^5.3.2",
+        "express-session": "^1.17.2",
+        "handlebars": "^4.7.7",
+        "mysql2": "^2.2.5",
+        "sequelize": "^6.6.5"
+    }
+}
