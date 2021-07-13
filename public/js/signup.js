@@ -2,7 +2,7 @@ const signupFormHandler = async(event) => {
     event.preventDefault();
     console.log('SignUp Handler Fired')
 
-    const name = document.querySelector('#nameSignUp').value.trim();
+    const name = document.querySelector('#nameSignUp').value;
     const github = document.querySelector('#github').value.trim();
     const username = document.querySelector('#userNameSignUp').value.trim();
     const email = document.querySelector('#emailSignUp').value.trim();

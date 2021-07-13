@@ -7,7 +7,7 @@ const saltRounds = 5;
 //GET user
 router.get('/', async(req, res) => {
         User.findAll({
-                attributes: ['firstName', 'lastName', 'email', 'username', 'password']
+                attributes: ['name', 'github', 'username', 'email', 'password']
             })
             .then(userInfo => res.json(userInfo))
             .catch(err => {
@@ -19,8 +19,8 @@ router.get('/', async(req, res) => {
 router.post('/', async(req, res) => {
     try {
         const dbUserData = await User.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            name: req.body.name,
+            github: req.body.github,
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
@@ -69,6 +69,7 @@ router.post('/login', async(req, res) => {
             console.log('dbUserData: \n' + dbUserData.username + '\n END DBUSERDATA');
             //Once the user successfully logs in, set up sessions with the 'loggedIn' variable
             req.session.loggedIn = true;
+            req.session.username = dbUserData.username;
 
             res
                 .status(200)

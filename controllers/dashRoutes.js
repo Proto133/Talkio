@@ -4,11 +4,10 @@ const { Post, User, Comment } = require('../models');
 
 
 router.get('/', (req, res) => {
-    console.log("req", req.sessionID)
     Post.findAll({
             where: {
                 // use the ID from the session
-                user_id: req.sessionID
+                user_id: req.session.username
             },
             attributes: [
                 'id',
