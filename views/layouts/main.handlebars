@@ -2,39 +2,65 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Museum</title>
-  <link rel="stylesheet" type="text/css" href="/css/jass.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talkio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
-<body>
-  <header>
-    <h1>Welcome to the Four Seasons Museum</h1>
-  </header>
-  <nav>
-    <a href="/">Home</a>
-    <!-- If the user is logged in, show a logout button -->
-    {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo right">Talk<span class="io">io</span></a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                {{#if loggedIn}}
+                <li><a href="/" class="">homepage</a></li>
+                <li><a href="/dashboard" class="">dashboard</a></li>
+                <li><button id="logout" class="">logout</button></li>
+                {{else}}
+                <li><a href="/" class="">homepage</a></li>
+                <li><a href="/login" class="">login</a></li>
+                {{/if}}
+            </ul>
+        </div><br>
+    </nav>
+</header>
+<main>
+    {{#if body }}
+    {{{body}}}
     {{else}}
-    <!-- Otherwise, show a link to login -->
-    <a href="/login">Login</a>
+    <h3 id="tagline">The Best Blogging Site in the Universe</h3>
     {{/if}}
-  </nav>
-  <main>
-    <aside>
-      <h2>Enjoy the galleries!</h2>
-    </aside>
-    <div class="gallery">
-      {{{body}}}
+
+</main>
+
+<footer class="center">
+    <div class="">
+        <p>
+            <a href="/">homepage</a> {{#if loggedIn}} |
+            <a href="/dashboard/">dashboard</a> | {{else}} | <a href="/login/">login</a> {{/if}}
+        </p>
     </div>
-  </main>
-  <!-- If the user is logged in, load the JS script for when they logout -->
-  {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+    <div class="">
+        <p>
+            <strong>Talk<span>io</span></strong> by <a href="https://github.com/proto133">Peter Roto</a> | Check Out the Code:
+            <a href="https://github.com/proto133/talkio"><i class="fab fa-github"></i> Talkio Repo</a> |
+            <a href="mailto:support@peterroto.com"><i class="far fa-envelope"></i> support@peterroto.com</a> |
+        </p>
+    </div>
+</footer>
+</div>
+
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}
 </body>
 
 </html>

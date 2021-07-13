@@ -16,7 +16,7 @@ router.post('/', async(req, res) => {
             password: req.body.password,
         });
 
-        // TODO: Set up sessions with the 'loggedIn' variable
+        // Set up sessions with the 'loggedIn' variable
         req.session.save(() => {
             req.session.loggedIn = true;
             res.status(200).json(dbUserData);
@@ -46,22 +46,23 @@ router.post('/login', async(req, res) => {
             return;
         }
 
-        const comparison = await bcrypt.compare(password, dbUserData[0].password);
+        // const comparison = await bcrypt.compare(password, dbUserData[0].password);
 
-        if (!comparison) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect email or password. Please try again!' });
-            return;
-        }
+        // if (!comparison) {
+        //     res
+        //         .status(400)
+        //         .json({ message: 'Incorrect email or password. Please try again!' });
+        //     return;
+        // }
 
         req.session.save(() => {
-            // TODO: Once the user successfully logs in, set up sessions with the 'loggedIn' variable
+            console.log('dbUserData: \n' + dbUserData.username + '\n END DBUSERDATA');
+            //Once the user successfully logs in, set up sessions with the 'loggedIn' variable
             req.session.loggedIn = true;
 
             res
                 .status(200)
-                .json({ user: dbUserData[0].username, message: 'You are now logged in!' });
+                .json({ user: dbUserData.username, message: 'You are now logged in!' });
         });
     } catch (err) {
         console.log(err);

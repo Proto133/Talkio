@@ -2,10 +2,13 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
-router.get('/', (req, res) => {
-    console.log(req.session);
 
+router.get('/', (req, res) => {
     Post.findAll({
+            where: {
+                // use the ID from the session
+                user_id: req.session.user_id
+            },
             attributes: [
                 'id',
                 'title',
@@ -27,11 +30,9 @@ router.get('/', (req, res) => {
             ]
         })
         .then(dbPostData => {
+            // serialize data before passing to template
             const posts = dbPostData.map(post => post.get({ plain: true }));
-            res.render('homepage', {
-                posts,
-                loggedIn: req.session.loggedIn
-            });
+            res.render('dashboard', { posts, loggedIn: true });
         })
         .catch(err => {
             console.log(err);
@@ -39,25 +40,7 @@ router.get('/', (req, res) => {
         });
 });
 
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-
-    res.render('login');
-});
-
-router.get('/signup', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-
-    res.render('signup');
-});
-
-router.get('/post/:id', (req, res) => {
+router.get('/edit/:id', (req, res) => {
     Post.findOne({
             where: {
                 id: req.params.id
@@ -91,10 +74,9 @@ router.get('/post/:id', (req, res) => {
             // serialize the data
             const post = dbPostData.get({ plain: true });
 
-            // pass data to template
-            res.render('single-post', {
+            res.render('edit-post', {
                 post,
-                loggedIn: req.session.loggedIn
+                loggedIn: true
             });
         })
         .catch(err => {
@@ -102,5 +84,43 @@ router.get('/post/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+router.get('/create/', (req, res) => {
+    Post.findAll({
+            where: {
+                // use the ID from the session
+                user_id: req.session.user_id
+            },
+            attributes: [
+                'id',
+                'title',
+                'created_at',
+                'post_content'
+            ],
+            include: [{
+                    model: Comment,
+                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username', 'twitter', 'github']
+                    }
+                },
+                {
+                    model: User,
+                    attributes: ['username', 'twitter', 'github']
+                }
+            ]
+        })
+        .then(dbPostData => {
+            // serialize data before passing to template
+            const posts = dbPostData.map(post => post.get({ plain: true }));
+            res.render('create-post', { posts, loggedIn: true });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 
 module.exports = router;
