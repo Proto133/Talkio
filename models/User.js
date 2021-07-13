@@ -9,13 +9,13 @@ const User = sequelize.define('User', {
             primaryKey: true,
             autoIncrement: true,
         },
-        firstName: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        lastName: {
+        github: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true
         },
         username: {
             type: DataTypes.STRING,
@@ -35,15 +35,6 @@ const User = sequelize.define('User', {
             validate: {
                 len: [6],
             },
-        },
-        fullName: {
-            type: DataTypes.VIRTUAL,
-            get() {
-                return `${this.firstName} ${this.lastName}`;
-            },
-            set(value) {
-                throw new Error("Can't set `fullName` value!");
-            }
         },
     }, {
         hooks: {

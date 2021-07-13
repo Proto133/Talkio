@@ -1,19 +1,23 @@
-    <div class="mb-5 pt-3">
-        <a href="/dashboard/create/"><button id="create-post" class="button is-primary is-pulled-right">create post</button></a>
-        
-        <h2 class="title pb-4">dashboard: your posts</h2><hr>
-{{#if posts.length}}
-    </div>
+<aside>
+<h2 class="title center flow-text">your posts</h2>
 
+<hr>
+<br />
+<a id="writeBtn" class="waves-effect waves-light btn"><i class="material-icons right">history_edu</i>Write Something</a>
+</aside>
+{{#if posts.length}}
+<section>
     {{#each posts as |post|}}
-        {{> post-info post}}
+        {{> postDetails post}}
         
             <a href="/dashboard/edit/{{post.id}}"><button class="button mb-5 ml-5 is-warning">edit post</button></a>
         </div>
     {{/each}}
 
 {{else}}
-<h6 class="pb-4 has-text-centered is-italic">you do not currently have any posts</h6>
+<section class="container">
+<h5>you do not currently have any posts</h5>
+</section>
 
 {{/if}}
 
