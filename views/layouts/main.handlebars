@@ -19,7 +19,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" class="brand-logo right">Talk<span class="io">io</span></a>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <ul id="nav-mobile" class="left">
                 {{#if loggedIn}}
                 <li><a href="/" class="">homepage</a></li>
                 <li><a href="/dashboard" class="">dashboard</a></li>
@@ -44,8 +44,8 @@
 <footer class="center">
     <div class="">
         <p>
-            <a href="/">homepage</a> {{#if loggedIn}} |
-            <a href="/dashboard/">dashboard</a> | {{else}} | <a href="/login/">login</a> {{/if}}
+            <a href="/">Homepage</a> {{#if loggedIn}} |
+            <a href="/dashboard/">Dashboard</a> | {{else}} | <a href="/login/">Login</a> | <a href="/signup/">SignUp</a>{{/if}}
         </p>
     </div>
     <div class="">

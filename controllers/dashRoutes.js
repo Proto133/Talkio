@@ -4,10 +4,11 @@ const { Post, User, Comment } = require('../models');
 
 
 router.get('/', (req, res) => {
+    console.log("req", req.sessionID)
     Post.findAll({
             where: {
                 // use the ID from the session
-                user_id: req.session.user_id
+                user_id: req.sessionID
             },
             attributes: [
                 'id',
@@ -16,21 +17,17 @@ router.get('/', (req, res) => {
                 'post_content'
             ],
             include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username', 'twitter', 'github']
-                    }
-                },
-                {
-                    model: User,
-                    attributes: ['username', 'twitter', 'github']
-                }
-            ]
+                //     model: Comment,
+                //     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                // },
+                // {
+                model: User,
+                attributes: ['username']
+            }]
         })
         .then(dbPostData => {
-            // serialize data before passing to template
+            console.log('dbPostData \n----------------------\n', dbPostData)
+                // serialize data before passing to template
             const posts = dbPostData.map(post => post.get({ plain: true }));
             res.render('dashboard', { posts, loggedIn: true });
         })
@@ -38,6 +35,7 @@ router.get('/', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
+
 });
 
 router.get('/edit/:id', (req, res) => {
@@ -56,12 +54,12 @@ router.get('/edit/:id', (req, res) => {
                     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
-                        attributes: ['username', 'twitter', 'github']
+                        attributes: [' username']
                     }
                 },
                 {
                     model: User,
-                    attributes: ['username', 'twitter', 'github']
+                    attributes: ['username']
                 }
             ]
         })
@@ -102,12 +100,12 @@ router.get('/create/', (req, res) => {
                     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
-                        attributes: ['username', 'twitter', 'github']
+                        attributes: ['username']
                     }
                 },
                 {
                     model: User,
-                    attributes: ['username', 'twitter', 'github']
+                    attributes: ['username']
                 }
             ]
         })

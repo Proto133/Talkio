@@ -56,14 +56,14 @@ router.post('/login', async(req, res) => {
             return;
         }
 
-        const comparison = await bcrypt.compare(password, dbUserData[0].password);
+        // const comparison = await bcrypt.compare(password, dbUserData[0].password);
 
-        if (!comparison) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect email or password. Please try again!' });
-            return;
-        }
+        // if (!comparison) {
+        //     res
+        //         .status(400)
+        //         .json({ message: 'Incorrect email or password. Please try again!' });
+        //     return;
+        // }
 
         req.session.save(() => {
             console.log('dbUserData: \n' + dbUserData.username + '\n END DBUSERDATA');
