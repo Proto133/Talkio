@@ -4,8 +4,18 @@ const bcrypt = require('bcrypt');
 const saltRounds = 5;
 
 
-
-// CREATE new user
+//GET user
+router.get('/', async(req, res) => {
+        User.findAll({
+                attributes: ['firstName', 'lastName', 'email', 'username', 'password']
+            })
+            .then(userInfo => res.json(userInfo))
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            })
+    })
+    // CREATE new user
 router.post('/', async(req, res) => {
     try {
         const dbUserData = await User.create({
@@ -46,14 +56,14 @@ router.post('/login', async(req, res) => {
             return;
         }
 
-        // const comparison = await bcrypt.compare(password, dbUserData[0].password);
+        const comparison = await bcrypt.compare(password, dbUserData[0].password);
 
-        // if (!comparison) {
-        //     res
-        //         .status(400)
-        //         .json({ message: 'Incorrect email or password. Please try again!' });
-        //     return;
-        // }
+        if (!comparison) {
+            res
+                .status(400)
+                .json({ message: 'Incorrect email or password. Please try again!' });
+            return;
+        }
 
         req.session.save(() => {
             console.log('dbUserData: \n' + dbUserData.username + '\n END DBUSERDATA');

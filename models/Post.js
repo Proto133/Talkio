@@ -25,6 +25,18 @@ const Post = sequelize.define('Post', {
             key: 'id'
         }
     }
+    // postSnip: {
+    //     type: DataTypes.VIRTUAL,
+    //     get() {
+    //         let word = post_content.split(" ")
+    //         const snippet = [];
+    //         for (let i = 0; i < 25; i++) {
+    //             let words = post_content[i].split(' ');
+    //             snippet.push(words)
+    //         }
+    //         return `${this.firstName} ${this.lastName}`;
+    //     }
+    // },
 }, {
     sequelize,
     freezeTableName: true,
