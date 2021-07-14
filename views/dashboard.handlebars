@@ -1,15 +1,16 @@
-<aside>
-<h2 class="title center flow-text">Your Posts</h2>
-
-<hr>
+<section class="dashTitle">
+    <br>
+<a href="/dashboard/create/" id="writeBtn" class="waves-effect waves-light btn"><i class="material-icons right">history_edu</i>Write Something</a>
 <br />
-<a id="writeBtn" class="waves-effect waves-light btn"><i class="material-icons right">history_edu</i>Write Something</a>
-</aside>
+<h2 class="title center flow-text">Your Posts</h2>
+<hr>
+<br>
+</section>
 {{#if posts.length}}
 <section>
 {{#each posts as |post|}}
 {{> postDetail}}
-            <a href="/dashboard/edit/{{post.id}}"><button class="button mb-5 ml-5 is-warning">edit post</button></a>
+            <a href="/dashboard/edit/{{post.id}}"><button id="editBtn" class="waves-effect waves-light btn">Edit Post</button></a>
         </div>
     {{/each}}
 

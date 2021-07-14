@@ -1,5 +1,5 @@
 :root {
-    --primary: #3d5852;
+    --primary: #cc4b4ffd;
     --secondary: #86938f;
     --tertiary: #ee6e73;
     --quatrinary: #6c6b67;
@@ -42,10 +42,14 @@ header {
     color: var(--light);
 }
 
+.card-header {
+    background: var(--tertiary);
+}
+
 main {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
-    flex-grow: 1;
+    flex-grow: 1; */
 }
 
 aside {
@@ -94,8 +98,8 @@ div.card img {
 
 /* Dashboard */
 
-aside .title {
-    width: 100%;
+.dashTitle {
+    flex: 1 0 100%;
 }
 
 .title {
@@ -103,8 +107,13 @@ aside .title {
 }
 
 #writeBtn {
-    width: 80%;
-    margin: 0 10%;
+    max-width: 30vw;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#editBtn {
+    float: right;
 }
 
 .viewPosts {
