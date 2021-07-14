@@ -7,10 +7,12 @@
 <br>
 </section>
 {{#if posts.length}}
-<section>
+<section class="postWall">
 {{#each posts as |post|}}
+<div class="postCards">
 {{> postDetail}}
             <a href="/dashboard/edit/{{post.id}}"><button id="editBtn" class="waves-effect waves-light btn">Edit Post</button></a>
+        </div>
         </div>
     {{/each}}
 

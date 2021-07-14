@@ -33,12 +33,13 @@
         </div><br>
     </nav>
 </header>
-<main>
+<main class="window">
     {{#if body }}
     {{{body}}}
     {{else}}
-    <h3 id="tagline">The Best Blogging Site in the Universe</h3>
+     <h3 id="tagline">The Best Blogging Site in the Universe</h3>
     {{/if}}
+    
 
 </main>
 
@@ -46,7 +47,7 @@
     <div class="">
         <p>
             <a href="/">Homepage</a> {{#if loggedIn}} |
-            <a href="/dashboard/">Dashboard</a> | {{else}} | <a href="/login/">Login</a> | <a href="/signup/">SignUp</a>
+            <a href="/dashboard/">Dashboard</a>  {{else}} | <a href="/login/">Login</a> | <a href="/signup/">SignUp</a>
             {{/if}}
         </p>
     </div>
@@ -54,7 +55,7 @@
         <p>
             <strong>Talk<span>io</span></strong> by <a href="https://github.com/proto133">Peter Roto</a> | Check Out the Code:
             <a href="https://github.com/proto133/talkio"><i class="fab fa-github"></i> Talkio Repo</a> |
-            <a href="mailto:support@peterroto.com"><i class="far fa-envelope"></i> support@peterroto.com</a> |
+            <a href="mailto:support@peterroto.com"><i class="far fa-envelope"></i> support@peterroto.com</a>
         </p>
     </div>
 </footer>

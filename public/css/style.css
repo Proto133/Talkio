@@ -46,10 +46,9 @@ header {
     background: var(--tertiary);
 }
 
-main {
-    /* display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1; */
+.window {
+    flex: 1;
+    padding: 0 5vw 6.185vw;
 }
 
 aside {
@@ -60,6 +59,15 @@ aside {
     height: 80%;
     text-align: left;
     color: var(--light);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--tertiary);
+    width: 100%;
 }
 
 .io {
@@ -119,4 +127,110 @@ div.card img {
 .viewPosts {
     margin-left: 10%;
     flex: 1 1 90%;
+}
+
+.postCards {
+    flex: 0 1 33%;
+    max-height: 24vh;
+}
+
+.postCards .card {
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.postCards .card-content {
+    max-height: 20vh;
+    width: 100%;
+    padding: 2px !important;
+    /* box-sizing: content-box; */
+}
+
+.postCards .content p {
+    margin: 0;
+    max-height: 7vh;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.postCards .card-footer {
+    /* position: relative; */
+    padding-bottom: 0;
+    margin-top: 2vh;
+    margin-bottom: 0 !important;
+    justify-self: flex-end;
+}
+
+.postWall {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+/* EDIT POSTS */
+
+article {
+    flex: 1;
+    margin: 2vh 0;
+}
+
+.editheader {
+    flex: 1 0 100%;
+}
+
+.buttons {
+    flex: 1 0 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttons button {
+    flex: 0 1 33%;
+}
+
+.center {
+    margin-top: 2vh;
+    flex: 1 0 100%;
+}
+
+.formdiv {
+    min-height: 100%;
+    display: flex;
+}
+
+.edittitle {
+    margin: 0 !important;
+    padding: 0 2vw;
+    flex: 1 0 80%;
+}
+
+.edit-post-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.editbox {
+    margin-top: -7vh !important;
+    min-height: min-content;
+    padding: 2vh 2vw;
+    flex: 1 0 100%;
+}
+
+.editbox textarea {
+    width: 100%;
+    height: 20vh;
+    resize: none;
+    box-sizing: border-box;
+}
+
+.flex {
+    height: 200%;
+    display: flex;
+    justify-content: flex-start;
 }

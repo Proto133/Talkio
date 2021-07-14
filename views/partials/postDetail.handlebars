@@ -1,19 +1,22 @@
 
-<div class="card">
+<div class="card ">
   <header class="card-header">
- <div class="column">
+ <div class="row">
       <a href="/post/{{id}}"  class="title">{{title}} </a>
 </div>
   </header>
 
     <div class="card-content">
-        <div class="content has-text-justified">
+        <div class="content">
+          <p>
             {{post_content}}
+            </p>
         </div>
-            <div class="is-pulled-right">
+            <div class="card-footer">
                 <b>{{User.username}}</b> | 
                 <a href="https://github.com/{{User.github}}"><i class="fab fa-github"></i></a>
                  | {{format_date created_at}} | <a href="/post/{{id}}">{{Comments.length}} {{format_plural "Comment" Comments.length}}</a>
             </div>
+        </div>
         </div>
     

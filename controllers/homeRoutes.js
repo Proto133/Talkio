@@ -3,36 +3,41 @@ const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
 router.get('/', (req, res) => {
-    Post.findAll({
-            attributes: [
-                'id',
-                'title',
-                'created_at',
-                'post_content'
-            ],
-            include: [{
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-            }],
-            include: [{
-                model: User,
-                attributes: ['id', 'username', 'github']
-            }]
+    if (req.session.loggedIn) {
+        Post.findAll({
+                attributes: [
+                    'id',
+                    'title',
+                    'created_at',
+                    'post_content'
+                ],
+                include: [{
+                    model: Comment,
+                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                }],
+                include: [{
+                    model: User,
+                    attributes: ['id', 'username', 'github']
+                }]
 
-        })
-        .then(dbPostData => {
-            const posts = dbPostData.map(post => post.get({ plain: true }));
-            res.render('homepage', {
-                // console.log('Post: \n \n', posts + ' \n \n')
-                posts,
-                loggedIn: req.session.loggedIn
+            })
+            .then(dbPostData => {
+                const posts = dbPostData.map(post => post.get({ plain: true }));
+                res.render('homepage', {
+                    // console.log('Post: \n \n', posts + ' \n \n')
+                    posts,
+                    loggedIn: req.session.loggedIn
 
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
             });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    } else {
+        res.redirect('/login');
+        return;
+    }
 });
 
 router.get('/login', (req, res) => {
@@ -46,6 +51,7 @@ router.get('/login', (req, res) => {
         res.render('login');
         return;
     }
+
 });
 
 router.get('/signup', (req, res) => {
@@ -69,18 +75,13 @@ router.get('/post/:id', (req, res) => {
                 'post_content'
             ],
             include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username', 'twitter', 'github']
-                    }
-                },
-                {
-                    model: User,
-                    attributes: ['username', 'twitter', 'github']
-                }
-            ]
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+
+
+                model: User,
+                attributes: ['username', 'github']
+            }]
         })
         .then(dbPostData => {
             if (!dbPostData) {
@@ -92,7 +93,7 @@ router.get('/post/:id', (req, res) => {
             const post = dbPostData.get({ plain: true });
 
             // pass data to template
-            res.render('single-post', {
+            res.render('singlePost', {
                 post,
                 loggedIn: req.session.loggedIn
             });
