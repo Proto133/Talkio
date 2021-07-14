@@ -2,16 +2,16 @@
     <a href="/dashboard" class="right"> &larr; Back to Dash</a>
   <h2 class="title center flow-text">New Blog Post</h2><hr>
 
-  <form class="new-post-form">
-    <div>
+  <form class=" card new-post-form">
+    <div class="writetitle">
       <label for="post-title">Title:</label>
       <input class="input" type="text" id="post-title" name="post-title" placeholder="Best Post Title"/>
     </div>
-    <div>
+    <div class="writebox">
       <label for="post-content">Content:</label>
-      <input class="textarea is-large" id="post-content" name="post-content" placeholder="Monkey's rarely follow you home, but when they do. . ."/>
+      <textarea id="post-content" name="post-content" placeholder="Monkey's rarely follow you home, but when they do. . ."></textarea>
     </div>
-    <button type="submit" class="btn">Create Post</button>
+    <button id="addPost" type="button" class="center btn">Create Post</button>
   </form>
 </section>
 

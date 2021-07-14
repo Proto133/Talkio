@@ -99,6 +99,29 @@ div.card img {
 }
 
 
+/* NEW POST */
+
+.writetitle {
+    margin: 0 !important;
+    padding: 2vw 2vw 0;
+    flex: 1 0 80%;
+}
+
+.writebox {
+    min-height: min-content;
+    padding: 0 2vw;
+    flex: 1 0 100%;
+    margin-bottom: 2v;
+}
+
+.writebox textarea {
+    width: 100%;
+    height: 20vh;
+    resize: none;
+    box-sizing: border-box;
+}
+
+
 /* Signup Form */
 
 .cardTitle {
