@@ -49,11 +49,11 @@ main {
 }
 
 aside {
-    position: fixed;
+    position: absolute;
     background-color: var(--tertiary);
     padding: 2vw;
-    width: 15%;
-    height: 100%;
+    max-width: 15%;
+    height: 80%;
     text-align: left;
     color: var(--light);
 }
@@ -105,4 +105,9 @@ aside .title {
 #writeBtn {
     width: 80%;
     margin: 0 10%;
+}
+
+.viewPosts {
+    margin-left: 10%;
+    flex: 1 1 90%;
 }

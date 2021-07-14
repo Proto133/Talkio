@@ -40,7 +40,7 @@ router.post('/', async(req, res) => {
 // Login
 router.post('/login', async(req, res) => {
     const email = req.body.email;
-    const password = req.body.password;
+    // const password = req.body.password;
 
     try {
         const dbUserData = await User.findOne({
@@ -66,10 +66,11 @@ router.post('/login', async(req, res) => {
         // }
 
         req.session.save(() => {
-            console.log('dbUserData: \n' + dbUserData.username + '\n END DBUSERDATA');
-            //Once the user successfully logs in, set up sessions with the 'loggedIn' variable
-            req.session.loggedIn = true;
+            // declare session variables
+            req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
+            req.session.github = dbUserData.github;
+            req.session.loggedIn = true;
 
             res
                 .status(200)

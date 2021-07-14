@@ -1,13 +1,15 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
+const userAuth = require('../utils/userAuth');
 
 
 router.get('/', (req, res) => {
+    console.log('\n \n req.session.userId \n \n', req.session.user_id);
     Post.findAll({
             where: {
                 // use the ID from the session
-                user_id: req.session.username
+                user_id: req.session.user_id
             },
             attributes: [
                 'id',
@@ -16,19 +18,22 @@ router.get('/', (req, res) => {
                 'post_content'
             ],
             include: [{
-                //     model: Comment,
-                //     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                // },
-                // {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+
+
                 model: User,
                 attributes: ['username']
             }]
         })
         .then(dbPostData => {
-            console.log('dbPostData \n----------------------\n', dbPostData)
-                // serialize data before passing to template
             const posts = dbPostData.map(post => post.get({ plain: true }));
-            res.render('dashboard', { posts, loggedIn: true });
+
+            res.render('dashboard', {
+                posts,
+                loggedIn: req.session.loggedIn,
+                user_id: req.session.user_id
+            });
         })
         .catch(err => {
             console.log(err);

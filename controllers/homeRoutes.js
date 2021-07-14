@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
 router.get('/', (req, res) => {
-    console.log('req.session', req);
     Post.findAll({
             attributes: [
                 'id',
@@ -12,23 +11,22 @@ router.get('/', (req, res) => {
                 'post_content'
             ],
             include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    // include: {
-                    model: User,
-                    attributes: ['username', 'github']
-                },
-                {
-                    model: User,
-                    attributes: ['username', 'github']
-                }
-            ]
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            }],
+            include: [{
+                model: User,
+                attributes: ['id', 'username', 'github']
+            }]
+
         })
         .then(dbPostData => {
             const posts = dbPostData.map(post => post.get({ plain: true }));
             res.render('homepage', {
+                // console.log('Post: \n \n', posts + ' \n \n')
                 posts,
                 loggedIn: req.session.loggedIn
+
             });
         })
         .catch(err => {
@@ -38,13 +36,15 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    console.log(req.session.loggedIn);
+    console.log(req.session.loggedIn)
+    console.log('req.session.user_id \n \n', req.session.user_id);
     if (req.session.loggedIn) {
+
         res.redirect('/dashboard');
-        return;
     } else {
 
         res.render('login');
+        return;
     }
 });
 

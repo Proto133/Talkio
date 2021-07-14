@@ -24,7 +24,7 @@ const Post = sequelize.define('Post', {
             model: 'User',
             key: 'id'
         }
-    },
+    }
     // postSnip: {
     //     type: DataTypes.VIRTUAL,
     //     get() {

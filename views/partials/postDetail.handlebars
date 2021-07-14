@@ -1,0 +1,26 @@
+
+<div class="card">
+  <header class="card-header">
+    
+        <div class="column">
+            <p class=" has-text-primary-light"></p>
+      <a href="/post/{{id}}"  class="has-text-black is-capitalized is-pulled-left">{{title}} </a></p>
+      </div>
+
+      <div class="column">
+      <span class=""> </span>
+      </div>
+    
+  </header>
+
+    <div class="card-content">
+        <div class="content has-text-justified">
+            {{post_content}}
+        </div>
+            <div class="is-pulled-right">
+                <b>{{User.username}}</b> | 
+                <a href="https://github.com/{{User.github}}"><i class="fab fa-github"></i></a>
+                 | {{format_date created_at}} | <a href="/post/{{id}}">{{Comments.length}} {{format_plural "Comment" Comments.length}}</a>
+            </div>
+        
+    </div>

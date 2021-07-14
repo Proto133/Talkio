@@ -1,5 +1,5 @@
 <aside>
-<h2 class="title center flow-text">your posts</h2>
+<h2 class="title center flow-text">Your Posts</h2>
 
 <hr>
 <br />
@@ -7,16 +7,15 @@
 </aside>
 {{#if posts.length}}
 <section>
-    {{#each posts as |post|}}
-        {{> postDetails post}}
-        
+{{#each posts as |post|}}
+{{> postDetail}}
             <a href="/dashboard/edit/{{post.id}}"><button class="button mb-5 ml-5 is-warning">edit post</button></a>
         </div>
     {{/each}}
 
 {{else}}
 <section class="container">
-<h5>you do not currently have any posts</h5>
+<h5>you do not currently have any posts</h5> 
 </section>
 
 {{/if}}
