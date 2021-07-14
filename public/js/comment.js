@@ -7,8 +7,8 @@ async function commentFormHandler(event) {
         window.location.toString().split('/').length - 1
     ];
 
-    console.log('\n \n POST_ID:', post_id)
-    console.log('\n \n Comment:', comment_text)
+    //console.log\n \n POST_ID:', post_id)
+    //console.log\n \n Comment:', comment_text)
 
     if (comment_text) {
 
@@ -23,7 +23,7 @@ async function commentFormHandler(event) {
             }
         });
 
-        console.log('response:', response)
+        //console.logresponse:', response)
 
         if (response.ok) {
             document.location.reload();

@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
             .then(dbPostData => {
                 const posts = dbPostData.map(post => post.get({ plain: true }));
                 res.render('homepage', {
-                    // console.log('Post: \n \n', posts + ' \n \n')
+                    // //console.logPost: \n \n', posts + ' \n \n')
                     posts,
                     loggedIn: req.session.loggedIn
 
@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
 
 router.get('/login', (req, res) => {
     console.log(req.session.loggedIn)
-    console.log('req.session.user_id \n \n', req.session.user_id);
+        //console.logreq.session.user_id \n \n', req.session.user_id);
     if (req.session.loggedIn) {
 
         res.redirect('/dashboard');
@@ -100,8 +100,8 @@ router.get('/post/:id', (req, res) => {
 
             // serialize the data
             const post = dbPostData.get({ plain: true });
-            console.log('\n \n POST \n \n', post)
-                // pass data to template
+            //console.log\n \n POST \n \n', post)
+            // pass data to template
             res.render('singlePost', {
                 post,
                 loggedIn: req.session.loggedIn
