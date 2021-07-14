@@ -47,8 +47,10 @@ header {
 }
 
 .window {
-    flex: 1;
-    padding: 0 5vw 6.185vw;
+    max-height: 80vh;
+    flex: 1 0 auto;
+    padding: 0 5vw 7vw;
+    overflow: auto;
 }
 
 aside {
@@ -101,6 +103,13 @@ div.card img {
 
 .cardTitle {
     font-variant: small-caps;
+}
+
+
+/* HOMEPAGE */
+
+.homepage.postCards {
+    flex: 1 1 50%;
 }
 
 
@@ -233,4 +242,8 @@ article {
     height: 200%;
     display: flex;
     justify-content: flex-start;
+}
+
+.end {
+    justify-self: end;
 }

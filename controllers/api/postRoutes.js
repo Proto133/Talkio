@@ -21,16 +21,19 @@ router.get('/', (req, res) => {
                     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
-                        attributes: ['username']
+                        attributes: ['username', 'github']
                     }
                 },
                 {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['username', 'github']
                 },
             ]
         })
-        .then(dbPostData => res.json(dbPostData))
+        .then(dbPostData => {
+            console.log('\n \n dbPostData:', dbPostData + '\n \n')
+            res.json(dbPostData)
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -69,6 +72,7 @@ router.get('/:id', (req, res) => {
                 res.status(404).json({ message: 'No post found with this id' });
                 return;
             }
+
             res.json(dbPostData);
         })
         .catch(err => {

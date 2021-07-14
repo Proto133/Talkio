@@ -18,11 +18,11 @@
     <div class="center">
        Created on {{format_date post.created_at}} {{format_time post.created_at}}
       |
-      <a href="/post/{{post.id}}">{{#if post.comments.length}}{{post.comments.length}} {{format_plural "comment" post.comments.length}}{{else}} No Comments{{/if}}</a>
+      <a href="/post/{{post.id}}">{{Comments.length}} {{format_plural "Comment" post.comments.length}}</a>
     </div>
     <div class="buttons">
     <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">save</i>Save Post</button>
-    <button type="button" class="waves-effect waves-light btn"><i class="material-icons right">delete_forever</i>Delete Post</button>
+    <button type="button" class="delBtn waves-effect waves-light btn"><i class="material-icons right">delete_forever</i>Delete Post</button>
     </div>
   </form>
   </div>

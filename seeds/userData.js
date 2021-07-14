@@ -4,17 +4,17 @@ const userdata = [{
 
         name: 'Gerald Plotke',
         github: 'GPLOTKE',
-        username: 'JohnDoe',
+        username: 'JERRY',
         email: 'test@example.com',
         password: 'Password'
     }, {
 
         name: 'Matt Callahan',
         github: 'mattcllhn',
-        username: 'JaneDoe',
+        username: 'mattCAL',
         email: 'test2@example.com',
         password: 'Password1'
-    }
+    },
 
 ];
 
