@@ -106,6 +106,29 @@ div.card img {
 }
 
 
+/* Comment Stuff*/
+
+.comments {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card.comment {
+    flex: 0 1 55%;
+    float: center;
+}
+
+.comInfo {
+    text-align: center;
+    font-weight: bold;
+}
+
+.comText {
+    margin-left: 1vw;
+}
+
+
 /* HOMEPAGE */
 
 .homepage.postCards {
