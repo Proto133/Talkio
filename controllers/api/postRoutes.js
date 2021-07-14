@@ -31,7 +31,6 @@ router.get('/', (req, res) => {
             ]
         })
         .then(dbPostData => {
-            //console.log\n \n dbPostData:', dbPostData + '\n \n')
             res.json(dbPostData)
         })
         .catch(err => {

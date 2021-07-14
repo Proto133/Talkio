@@ -20,7 +20,6 @@ router.post('/', (req, res) => {
                 user_id: req.session.user_id,
             })
             .then(dbCommentData => {
-                console.log('\n \n dbCommentData ' + dbCommentData + '\n \n')
                 res.json(dbCommentData);
             })
             .catch(err => {
