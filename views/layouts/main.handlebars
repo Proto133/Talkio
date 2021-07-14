@@ -18,7 +18,7 @@
 <header>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo right">Talk<span class="io">io</span></a>
+            <a href="/" class="brand-logo right">Talk<span class="io">io</span></a>
             <ul id="nav-mobile" class="left">
                 {{#if loggedIn}}
                 <li><a href="/" class="">Homepage</a></li>
@@ -37,7 +37,9 @@
     {{#if body }}
     {{{body}}}
     {{else}}
-     <h3 id="tagline">The Best Blogging Site in the Universe</h3>
+    {{#unless loggedIn}}
+     <h3 id="tagline">The Best Blogging Site in the Universe</h3>'
+     {{/unless}}
     {{/if}}
 </main>
 

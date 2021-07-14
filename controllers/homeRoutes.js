@@ -14,12 +14,16 @@ router.get('/', (req, res) => {
                 include: [{
                     model: Comment,
                     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                }],
-                include: [{
-                    model: User,
-                    attributes: ['id', 'username', 'github']
-                }]
+                    include: {
+                        model: User,
+                        attributes: ['username', 'github']
+                    }
+                }, {
 
+
+                    model: User,
+                    attributes: ['username', 'github']
+                }]
             })
             .then(dbPostData => {
                 const posts = dbPostData.map(post => post.get({ plain: true }));
@@ -35,7 +39,7 @@ router.get('/', (req, res) => {
                 res.status(500).json(err);
             });
     } else {
-        res.redirect('/login');
+        res.render('homepage');
         return;
     }
 });
