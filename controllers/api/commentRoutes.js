@@ -12,7 +12,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    if (req.session.loggedIn) {
+    console.log('\n \n Logged In: ' + req.session.loggedIn + '\n \n')
+
+    console.log('\n \n Comment: ' + req.body.comment_text + '\n \n')
+
+    console.log('\n \n Post ID: ' + req.body.post_id + '\n \n')
+
+    console.log('\n \n User ID: ' + req.body.user_id + '\n \n')
+    if (res.session.loggedIn) {
         Comment.create({
                 comment_text: req.body.comment_text,
                 post_id: req.body.post_id,
@@ -20,6 +27,7 @@ router.post('/', (req, res) => {
                 user_id: req.session.user_id,
             })
             .then(dbCommentData => {
+                console.log('\n \n dbCommentData \n \n', dbCommentData + '\n \n')
                 res.json(dbCommentData);
             })
             .catch(err => {

@@ -51,6 +51,18 @@ router.post('/login', async(req, res) => {
                 email: email,
             },
         });
+        req.session.save(() => {
+            // declare session variables
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.github = dbUserData.github;
+            req.session.loggedIn = true;
+
+
+            res
+                .status(200)
+                .json({ user: dbUserData.username, message: 'You are now logged in!' });
+        });
 
         if (!dbUserData) {
             res
@@ -59,26 +71,8 @@ router.post('/login', async(req, res) => {
             return;
         }
 
-        // const comparison = await bcrypt.compare(password, dbUserData[0].password);
 
-        // if (!comparison) {
-        //     res
-        //         .status(400)
-        //         .json({ message: 'Incorrect email or password. Please try again!' });
-        //     return;
-        // }
 
-        req.session.save(() => {
-            // declare session variables
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
-            req.session.github = dbUserData.github;
-            req.session.loggedIn = true;
-
-            res
-                .status(200)
-                .json({ user: dbUserData.username, message: 'You are now logged in!' });
-        });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

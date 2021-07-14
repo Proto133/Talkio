@@ -4,7 +4,6 @@ const { Post, User, Comment } = require('../models');
 
 
 router.get('/', (req, res) => {
-    // //console.log\n \n req.session.userId \n \n', req.session.user_id);
     Post.findAll({
             where: {
                 // use the ID from the session
@@ -24,8 +23,6 @@ router.get('/', (req, res) => {
                     attributes: ['username', 'github']
                 }
             }, {
-
-
                 model: User,
                 attributes: ['username', 'github']
             }]
