@@ -7,8 +7,8 @@ async function commentFormHandler(event) {
         window.location.toString().split('/').length - 1
     ];
 
-    console.log('\n \n POST_ID: ', post_id)
-    console.log('\n \n Comment: ', comment_text)
+    console.log('\n \n POST_ID:', post_id)
+    console.log('\n \n Comment:', comment_text)
 
     if (comment_text) {
 
@@ -22,15 +22,14 @@ async function commentFormHandler(event) {
                 'Content-Type': 'application/json'
             }
         });
-
-        //console.logresponse:', response)
-
         if (response.ok) {
             document.location.reload();
         } else {
             alert(response.statusText);
         }
     }
+
+    document.querySelector('textarea[name="comment-body"]').value = " "
 }
 
-document.querySelector('#addComment').addEventListener('submit', commentFormHandler);
+document.querySelector('#addComment').addEventListener('click', commentFormHandler);

@@ -15,7 +15,7 @@
             <div class="card-footer">
                 <b>{{User.username}}</b> | 
                 <a href="https://github.com/{{User.github}}"><i class="fab fa-github"></i></a>
-                 | {{format_date created_at}} | <a href="/post/{{id}}">{{#if Comments.length}}{{{Comments.length}}} {{format_plural "Comment" Comments.length}}{{else}} No Comments{{/if}}</a>
+                 | {{format_date created_at}} | <a href="/post/{{id}}">{{Comments.length}} {{format_plural "Comment" Comments.length}}</a>
             </div>
         </div>
         </div>
