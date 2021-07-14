@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
-const userAuth = require('../utils/userAuth');
 
 
 router.get('/', (req, res) => {
@@ -54,18 +53,13 @@ router.get('/edit/:id', (req, res) => {
                 'post_content'
             ],
             include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: [' username']
-                    }
-                },
-                {
-                    model: User,
-                    attributes: ['username']
-                }
-            ]
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+
+
+                model: User,
+                attributes: ['username']
+            }]
         })
         .then(dbPostData => {
             if (!dbPostData) {
@@ -100,23 +94,18 @@ router.get('/create/', (req, res) => {
                 'post_content'
             ],
             include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username', 'github']
-                    }
-                },
-                {
-                    model: User,
-                    attributes: ['username', 'github']
-                }
-            ]
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+
+
+                model: User,
+                attributes: ['username']
+            }]
         })
         .then(dbPostData => {
             // serialize data before passing to template
             const posts = dbPostData.map(post => post.get({ plain: true }));
-            res.render('create-post', { posts, loggedIn: true });
+            res.render('write-post', { posts, loggedIn: true });
         })
         .catch(err => {
             console.log(err);

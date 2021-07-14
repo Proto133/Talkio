@@ -28,6 +28,9 @@ router.post('/', async(req, res) => {
 
         // Set up sessions with the 'loggedIn' variable
         req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.github = dbUserData.github;
             req.session.loggedIn = true;
             res.status(200).json(dbUserData);
         });
