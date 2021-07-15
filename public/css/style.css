@@ -16,23 +16,20 @@ body {
     flex-direction: column;
     min-height: 100vh;
     justify-content: flex-start;
-    background-color: var(--quatrinary);
+    background-color: black;
 }
 
 h3#tagline {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-150%);
+    color: white !important;
 }
 
 a {
     color: var(--dark);
     text-decoration: none;
-}
-
-a:visited {
-    color: inherit;
 }
 
 header {
@@ -42,8 +39,31 @@ header {
     color: var(--light);
 }
 
+.btn {
+    color: black !important;
+}
+
 .card-header {
     background: var(--tertiary);
+}
+
+.cardTitle {
+    font-size: 1.25vw;
+    font-weight: bold;
+}
+
+.cardTitle a {
+    text-decoration: none;
+    color: rgb(0, 0, 0) !important;
+}
+
+.card-content {
+    padding: 0 1vw 2vw 1vw !important;
+}
+
+.postContent {
+    margin-top: 0 !important;
+    padding: 0 0 2vw 0;
 }
 
 .window {
@@ -53,7 +73,12 @@ header {
     overflow: auto;
 }
 
-aside {
+.title {
+    text-decoration: none;
+}
+
+
+/* aside {
     position: absolute;
     background-color: var(--tertiary);
     padding: 2vw;
@@ -61,7 +86,7 @@ aside {
     height: 80%;
     text-align: left;
     color: var(--light);
-}
+} */
 
 footer {
     position: absolute;
@@ -70,6 +95,7 @@ footer {
     transform: translateX(-50%);
     background-color: var(--tertiary);
     width: 100%;
+    z-index: 1000;
 }
 
 .io {
@@ -81,6 +107,10 @@ footer {
 img {
     max-width: 100%;
     height: auto;
+}
+
+textarea {
+    background-color: white !important;
 }
 
 
@@ -149,6 +179,7 @@ div.card img {
 
 .comText {
     margin-left: 1vw;
+    background-color: #ee6e7283;
 }
 
 
@@ -199,7 +230,6 @@ div.card img {
 .postCards .card-content {
     max-height: 20vh;
     width: 100%;
-    padding: 2px !important;
     /* box-sizing: content-box; */
 }
 
@@ -254,7 +284,7 @@ article {
 
 .formdiv {
     min-height: 100%;
-    display: flex;
+    /* display: flex; */
 }
 
 .edittitle {
@@ -271,7 +301,7 @@ article {
 }
 
 .editbox {
-    margin-top: -7vh !important;
+    margin-top: -2vh !important;
     min-height: min-content;
     padding: 2vh 2vw;
     flex: 1 0 100%;

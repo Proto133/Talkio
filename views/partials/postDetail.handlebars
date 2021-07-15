@@ -1,16 +1,17 @@
-
 <div class="card ">
   <header class="card-header">
- <div class="row">
-      <a href="/post/{{id}}"  class="title">{{title}} </a>
+ <div class="cardTitle row">
+      <a href="/post/{{id}}"  class="black-text title">{{title}} </a>
 </div>
   </header>
 
+<a href="/post/{{id}}">
     <div class="card-content">
         <div class="content">
-          <p>
+          <p class="postContent">
             {{post_content}}
             </p>
+</a>
         </div>
             <div class="card-footer">
                 <b>{{User.username}}</b> | 
