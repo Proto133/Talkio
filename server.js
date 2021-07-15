@@ -52,6 +52,6 @@ DIDN'T WORK \u{1F622}
 
 app.use(routes);
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Talkio is now connected. Listening on port: ' + PORT));
 });

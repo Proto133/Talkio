@@ -58,26 +58,22 @@ header {
 }
 
 .card-footer {
+    font-size: 1rem;
     text-align: center;
+    -webkit-box-shadow: 0px 5px 5px -5px #000000;
+    box-shadow: 0px 5px 5px -5px #000000;
 }
 
 .cardTitle {
-    font-size: 3.5vw;
+    /* font-size: 3.5vw; */
     font-weight: bold;
-}
-
-.cardTitle a {
+    text-align: center;
     text-decoration: none;
     color: rgb(0, 0, 0) !important;
 }
 
 .card-content {
     padding: 0 1vw 2vw 1vw !important;
-}
-
-.postContent {
-    margin-top: 0 !important;
-    padding: 0 0 2vw 0;
 }
 
 .window {
@@ -136,6 +132,7 @@ textarea {
     flex-flow: column wrap;
     align-content: center;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 div.card img {
@@ -197,6 +194,11 @@ div.card img {
     background-color: #ee6e7283;
 }
 
+.commentBox {
+    height: 9vh;
+    resize: none;
+}
+
 
 /* HOMEPAGE */
 
@@ -238,6 +240,7 @@ div.card img {
 .postCards .cardTitle {
     /* font-size: 1.25vw; */
     font-weight: bold;
+    margin: 0;
 }
 
 .postCards .card {
@@ -248,11 +251,19 @@ div.card img {
     overflow: hidden;
 }
 
+.postContent {
+    font-size: 1rem;
+    margin-top: 0 !important;
+    padding: 1vh 0 2vw 0;
+    max-height: 50vh;
+    overflow: auto;
+}
+
 .postCards .card-content {
     max-height: 20vh;
     width: 100%;
     flex: 1 0 auto;
-    /* box-sizing: content-box; */
+    box-sizing: content-box;
 }
 
 .postCards .content p {
@@ -263,14 +274,15 @@ div.card img {
 }
 
 .postCards .card-footer {
-    /* position: relative; */
+    font-size: .75rem;
     padding-bottom: 0;
-    margin-top: 2vh;
-    margin-bottom: 0 !important;
+    background-color: lightgrey;
+    -webkit-box-shadow: 0px 5px 5px -5px #000000;
+    box-shadow: 0px 5px 5px -5px #000000;
 }
 
 .postWall {
-    display: block;
+    display: flex;
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
@@ -342,6 +354,7 @@ article {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1vh;
+    margin-bottom: 5vh;
 }
 
 .flex textarea {
@@ -371,7 +384,8 @@ article {
     }
 }
 
-@media screen and (max-width:400px) {
+
+/* @media screen and (max-width:400px) {
     .card-footer {
         font-size: 1.5vw
     }
@@ -381,4 +395,4 @@ article {
     .postCards .cardTitle {
         font-size: 3vw !important;
     }
-}
+} */

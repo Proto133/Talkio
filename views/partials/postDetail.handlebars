@@ -1,21 +1,20 @@
 <div class="card ">
-    <header class="card-header">
+    <section class="card-header">
         <div class="cardTitle row">
             <a href="/post/{{id}}" class="black-text title">{{title}} </a>
         </div>
-    </header>
-
-    <a href="/post/{{id}}">
-        <div class="card-content">
-            {{!-- <div class="content"> --}}
-                <p class="postContent">
-                    {{post_content}}
-                </p>
-            {{!-- </div> --}}
-    
-    </a>
-    <div class="card-footer">
+         <div class="card-footer">
         <b>{{User.username}}</b> |
         <a href="https://github.com/{{User.github}}"><i class="fab fa-github"></i></a> | {{format_date created_at}} | <a href="/post/{{id}}">{{Comments.length}} {{format_plural "Comment" Comments.length}}</a>
     </div>
+    </section>
+
+            <div class="card-content">
+            <div class="content">
+                <p class="postContent">
+                    {{post_content}}
+                </p>
+            </div>
+   
+   
     </div>
