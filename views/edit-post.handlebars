@@ -18,7 +18,7 @@
     <div class="center">
        Created on {{format_date post.created_at}} {{format_time post.created_at}}
       |
-      <a href="/post/{{post.id}}">{{Comments.length}} {{format_plural "Comment" post.comments.length}}</a>
+      <a href="/post/{{id}}">{{post.Comments.length}} {{format_plural "Comment" post.Comments.length}}</a>
     </div>
     <div class="buttons">
     <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">save</i>Save Post</button>
