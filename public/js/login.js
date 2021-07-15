@@ -19,6 +19,20 @@ const loginFormHandler = async(event) => {
     }
 };
 
+// Hide button once they start to avoid confusion
+let inputTxt = document.querySelector('input')
+let uhohBtn = document.querySelector('#signupBtn')
+
+inputTxt.addEventListener('focus', () => {
+    uhohBtn.style.display = 'none'
+    showBtn();
+})
+
+function showBtn() {
+    inputTxt.addEventListener('blur', () => {
+        uhohBtn.style.display = 'block'
+    })
+}
 document
-    .querySelector('.submitBtn')
+    .querySelector('#loginBtn')
     .addEventListener('click', loginFormHandler);

@@ -22,7 +22,20 @@ const signupFormHandler = async(event) => {
         }
     }
 };
+// Hide button once they start to avoid confusion
+let inputTxt = document.querySelector('input')
+let uhohBtn = document.querySelector('#loginBtn')
 
+inputTxt.addEventListener('focus', () => {
+    uhohBtn.style.display = 'none'
+    showBtn();
+})
+
+function showBtn() {
+    inputTxt.addEventListener('blur', () => {
+        uhohBtn.style.display = 'block'
+    })
+}
 
 document
     .querySelector('#submitSignUp')
