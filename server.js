@@ -17,7 +17,8 @@ const sess = {
     cookie: {
         expires: new Date(Date.now() + hour),
         maxAge: hour,
-        sameSite: 'Lax'
+        /* KEPT CAUSING SITE TO CRASH*/
+        // sameSite: 'Lax'
     },
     resave: false,
     saveUninitialized: true,
@@ -36,6 +37,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 /* Tried to redirect any fictional URL endpoints back to main page.
 // app.use(redirectUnmatched);

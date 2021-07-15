@@ -1,0 +1,13 @@
+{
+    "title": "There has been a problem",
+    "type": "The endoint you are trying to connect to doesn't exist.",
+    "message": "We will redirect you to the homepage soon.",
+    "solutions": {
+        "Posts": "thisURL.com/api/posts/#",
+        "Comments": "thisURL.com/api/comments/#",
+        "Users": "thisURL.com/api/users/#",
+        "Notes": "The '#' parameter is optional and should be replaced with the id number of the item for which you are searching."
+    },
+    "still stuck?": "email me and I'll  to help you out support@peterroto.com"
+
+}

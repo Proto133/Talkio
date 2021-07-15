@@ -4,12 +4,11 @@
 <!-- displaying form and comments-->
 <!-- only display if logged in -->
 {{#if loggedIn}}
+</div>
 <form class="comment-form">
-  <div>
+  <div class="flex">
     <textarea class="gray-text" name="comment-body"></textarea>
-  </div>
-
-  <div>
+  
     <button id="addComment" type="button" class="waves-effect waves-light btn"><i class="material-icons right">add_comment</i>add comment</button>
   </div>
   

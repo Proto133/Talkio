@@ -22,6 +22,7 @@ body {
     min-height: 100vh;
     justify-content: flex-start;
     background-color: black;
+    font-size: var(--fontSize)
 }
 
 h3#tagline {
@@ -38,10 +39,14 @@ a {
 }
 
 header {
-    /* padding: 40px; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 64px;
+    padding: 0;
     text-align: center;
-    background: var(--primary);
-    color: var(--light);
+    z-index: 1000;
 }
 
 .btn {
@@ -50,6 +55,10 @@ header {
 
 .card-header {
     background: var(--tertiary);
+}
+
+.card-footer {
+    text-align: center;
 }
 
 .cardTitle {
@@ -72,9 +81,8 @@ header {
 }
 
 .window {
-    max-height: 80vh;
-    flex: 1 0 auto;
-    padding: 0 5vw 7vw;
+    flex: 1 0 100%;
+    padding: 64px 5vw;
     overflow: auto;
 }
 
@@ -94,13 +102,15 @@ header {
 } */
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--tertiary);
     width: 100%;
+    height: 64px;
     z-index: 1000;
+    font-size: 12px;
 }
 
 .io {
@@ -231,15 +241,17 @@ div.card img {
 }
 
 .postCards .card {
-    height: 20vh;
+    max-height: 25vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 .postCards .card-content {
     max-height: 20vh;
     width: 100%;
+    flex: 1 0 auto;
     /* box-sizing: content-box; */
 }
 
@@ -255,11 +267,10 @@ div.card img {
     padding-bottom: 0;
     margin-top: 2vh;
     margin-bottom: 0 !important;
-    justify-self: flex-end;
 }
 
 .postWall {
-    display: flex;
+    display: block;
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
@@ -327,7 +338,21 @@ article {
 .flex {
     height: 200%;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1vh;
+}
+
+.flex textarea {
+    flex: 1 0 90%;
+}
+
+.flex button {
+    flex: 0 1 15vw;
+    font-size: 1vw;
+    padding: .25vw;
+    text-align: center;
 }
 
 .end {
