@@ -16,7 +16,8 @@ const sess = {
     secret: process.env.SECRET,
     cookie: {
         expires: new Date(Date.now() + hour),
-        maxAge: hour
+        maxAge: hour,
+        sameSite: 'Lax'
     },
     resave: false,
     saveUninitialized: true,
@@ -36,8 +37,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+/* Tried to redirect any fictional URL endpoints back to main page.
+// app.use(redirectUnmatched);
+
+DIDN'T WORK \u{1F622}
+
+// function redirectUnmatched(req, res) {
+//     console.log(req.url)
+//         // res.redirect('/');
+// }
+*/
+
 app.use(routes);
 
 sequelize.sync({ force: true }).then(() => {
-    app.listen(PORT, () => console.log('Now listening on port: ' + PORT));
+    app.listen(PORT, () => console.log('Talkio is now connected. Listening on port: ' + PORT));
 });

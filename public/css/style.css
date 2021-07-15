@@ -7,6 +7,11 @@
     --dark: #182c23;
     --error: rgb(228, 46, 1);
     --border-radius: 0.3rem;
+    --fontSize: calc(12px + 0.698vw);
+    /* The character count on */
+    --lineHeight: calc(var(--fontSize) * 1.4);
+    --letterSpacing: calc(var(--fontSize) * 0.0015);
+    --fontWeight: 300;
 }
 
 body {
@@ -141,7 +146,7 @@ div.card img {
     min-height: min-content;
     padding: 0 2vw;
     flex: 1 0 100%;
-    margin-bottom: 2v;
+    margin-bottom: 2vw;
 }
 
 .writebox textarea {
@@ -218,6 +223,11 @@ div.card img {
 .postCards {
     flex: 0 1 33%;
     max-height: 24vh;
+}
+
+.postCards .cardTitle {
+    /* font-size: 1.25vw; */
+    font-weight: bold;
 }
 
 .postCards .card {
@@ -324,9 +334,26 @@ article {
     justify-self: end;
 }
 
+[class^='flowtype-'],
+[class*=' flowtype-'] {
+    color: red
+}
+
 @media screen and (max-width:768px) {
     .cardTitle {
-        font-size: 5vw;
+        /* font-size: 5vw; */
         font-weight: bold;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .card-footer {
+        font-size: 1.5vw
+    }
+    .postContent {
+        font-size: 2.5vw;
+    }
+    .postCards .cardTitle {
+        font-size: 3vw !important;
     }
 }

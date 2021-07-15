@@ -2,8 +2,9 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
+
 router.get('/', (req, res) => {
-    console.log('\n \n Logged in: ' + req.session.loggedIn + '\n \n')
+    // console.log('\n \n Logged in: ' + req.session.loggedIn + '\n \n')
     if (req.session.loggedIn) {
         Post.findAll({
                 attributes: [
